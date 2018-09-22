@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home</title>
+
+    @Styles.Render("~/Assets/css")
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body id="page-top">
+
+    @{Html.RenderAction("Navigation", "Home");}
+
+    @{Html.RenderAction("Header", "Home");}
+
+    @RenderBody()
+
+    @{Html.RenderAction("AboutSection", "Home"); }
+
+    @{Html.RenderAction("ContactSection", "Home"); }
+
+    @{Html.RenderAction("Footer", "Home");}
+
+    @{Html.RenderAction("Copyright", "Home"); }
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    @RenderSection("ScrollButton", false)
+
+    @Scripts.Render("~/Assets/js")
+
+</body>
+</html>

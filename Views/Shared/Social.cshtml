@@ -1,0 +1,9 @@
+﻿@model IEnumerable<FrontEnd.Models.Social>
+@foreach (var item in Model)
+{
+    <li class="list-inline-item">
+        <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+            <i class="@item.IconSocial"></i>
+        </a>
+    </li>
+}

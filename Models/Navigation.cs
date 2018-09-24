@@ -17,5 +17,7 @@ namespace FrontEnd.Models
         public string NavName { set; get; }
         [MaxLength(20)]
         public string NavColor { set; get; }
+        [MaxLength(20)]
+        public string NavBackgroundColor { set; get; }
     }
 }

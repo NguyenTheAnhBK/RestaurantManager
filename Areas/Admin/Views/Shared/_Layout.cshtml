@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+    @Styles.Render("~/Admin/Assets/css")
+
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <a class="navbar-brand mr-1" href="index.html">Admin</a>
+        <!--Sidebar Toggle-->
+        @{ Html.RenderPartial("SidebarToggle");}
+        <!-- Navbar Search -->
+        @{ Html.RenderPartial("NavbarSearch");}
+        <!-- Navbar -->
+        @{ Html.RenderPartial("Navbar");}
+    </nav>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        @{ Html.RenderPartial("Sidebar");}
+        <div id="content-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            <!-- Sticky Footer -->
+            @{ Html.RenderPartial("Footer");}
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- Scroll to Top Button-->
+    @{ Html.RenderPartial("ScrollButton");}
+
+    <!-- Logout Modal-->
+    @{ Html.RenderPartial("LogoutModal");}
+    @Scripts.Render("~/Admin/Assets/js")
+
+    <script>
+        $(document).ready(function () {
+            $('.container .navbar-brand').text($('#navbar-brand').val().toString());
+            var background_color = $('#background_color').val().toString();
+            $('#mainNav').attr('style', 'background-color:' + background_color + '!important;' + 'color:white!important');
+        });
+        $('#preview').click(function () {
+
+            var navbarBrand = $('#navbar-brand').val().toString();
+            console.log(navbarBrand);
+            $('.container .navbar-brand').text($('#navbar-brand').val().toString());
+            var background_color = $('#background_color').val().toString();
+            console.log(background_color);
+            $('#mainNav').attr('style', 'background-color:' + background_color + '!important;' + 'color:white!important');
+        });
+    </script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+
+</html>
+

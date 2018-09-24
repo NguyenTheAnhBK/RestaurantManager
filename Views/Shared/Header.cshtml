@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<FrontEnd.Models.Header>
 <!-- Header -->
 <link href="~/Content/Assets/css/freelancer.min.css" rel="stylesheet" />
-@foreach (var item in Model)
-{
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container">
-            <img class="img-fluid mb-5 d-block mx-auto" src='@item.PathImageProfier' style="width:256px; height:256px;border-radius:100%;" alt="">
-            <h1 class="text-uppercase mb-0">@item.HeaderName</h1>
-            <hr class="star-light">
-            <h2 class="font-weight-light mb-0">@item.Text</h2>
-        </div>
-    </header>
-}
+
+<header class="masthead bg-primary text-white text-center">
+    <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src='@Model.LastOrDefault().PathImageProfier' style="width:256px; height:256px;border-radius:100%;" alt="">
+        <h1 class="text-uppercase mb-0">@Model.LastOrDefault().HeaderName</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">@Model.LastOrDefault().Text</h2>
+    </div>
+</header>

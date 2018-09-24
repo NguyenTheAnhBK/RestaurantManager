@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FrontEnd.Models.Navigation>
+@{
+    ViewBag.Title = "Navigation";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit navigation</h2>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<div>
+    <div class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger">Restaurant</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Category</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">About</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div>
+    @using (Html.BeginForm("Navigation", "Template", FormMethod.Post))
+    {
+        <div class="form-group col-md-4">
+            <label>Restaurant Name</label>
+            <input id="navbar-brand" type="text" placeholder="" class="form-control" style="" value="@Model.LastOrDefault().NavName.ToString()" name="nav_brand" />
+            <label>Background Color</label>
+            <input id="background_color" type="text" class="form-control" value="@Model.LastOrDefault().NavBackgroundColor.ToString()" name="background_color" />
+            <br />
+            <button class="btn btn-success" id="preview">Preview</button>
+            <button class="btn btn-primary pull-right" id="submit" type="submit">Submit</button>
+           
+        </div>
+    }
+</div>

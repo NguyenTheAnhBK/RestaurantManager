@@ -1,28 +1,32 @@
 ﻿@model IEnumerable<FrontEnd.Models.Navigation>
 <!-- Navigation -->
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
-        @foreach (var item in Model)
-        {
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">@item.NavName</a>
-            <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Category</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        }
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">@Model.LastOrDefault().NavName</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Category</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+<script>
+    $(document).ready(function () {
+        $('.bg-secondary').attr('style', 'background-color:' + '@Model.LastOrDefault().NavBackgroundColor' + '!important;');
+    })
+</script>
 

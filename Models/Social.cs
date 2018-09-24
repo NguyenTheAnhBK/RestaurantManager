@@ -12,8 +12,8 @@ namespace FrontEnd.Models
     {
         [Key]
         public int ID { set; get; }
-        [MaxLength(50)]
-        public string Name { set; get; }
+        [MaxLength(256)]
+        public string Link { set; get; }
 
         [Required]
         [MaxLength(256)]

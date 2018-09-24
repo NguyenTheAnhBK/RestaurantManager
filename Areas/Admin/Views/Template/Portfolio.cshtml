@@ -1,0 +1,99 @@
+﻿@model IEnumerable<FrontEnd.Models.PortFolio>
+@{
+    ViewBag.Title = "Portfolio";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<h2>Edit Portfolio</h2>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Mã thực đơn</td>
+                <td>Hình ảnh</td>
+                <td>Ghi chú</td>
+                <td><button class="btn btn-primary" type="button" id="btnAddNew">Add new</button></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.ID">
+                    <td>@item.ID</td>
+                    <td><img src='@item.PathImage' style="width:200px; height:100px;" /></td>
+                    <td>@item.Text</td>
+                    <td>
+                        @Ajax.ActionLink("Delete", "Portfolio", "Template", new { @id = item.ID }, new AjaxOptions {
+                       HttpMethod ="Delete",
+                       Confirm = "Bạn chắc chắn muốn xóa ?",
+                       OnComplete = "$('#row_" + item.ID + "').remove()",
+                   }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="modalAddUpdate" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title pull-left"></h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Path Image</label>
+                        <input type="text" id="pathImage" class="form-control" />
+                        <input type="hidden" id="hidID" value="0" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Note</label>
+                        <input type="text" id="text" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveDate()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+    $(document).ready(function () {
+        $('#btnAddNew').click(function () {
+            $('#modalAddUpdate').modal('show');
+        });
+        function SaveData() {
+            var pathImage = $('#pathImage').val();
+            var note = $('#text').val();
+            var id = parseInt($('#hidID').val());
+            $.ajax({
+                url: 'Template/SavePortfolio',
+                data: {
+                    portfolio: {
+                        pathImage: pathImage,
+                        Text: note
+                    }
+                },
+                type: 'POST',
+                dataType: 'json',
+                success: function (respond) {
+                    if (status == true) {
+                        alert('Save success');
+                        $('#modalAddUpdate').modal('hide');
+                    }
+                    else
+                        alert(respond.message);
+                },
+                error: function (message) {
+                    alert(message);
+                }
+            })
+        }
+    });
+</script>

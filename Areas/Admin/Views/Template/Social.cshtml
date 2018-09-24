@@ -1,0 +1,28 @@
+﻿@model FrontEnd.Models.Social
+@{
+    ViewBag.Title = "Social";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Add social network</h2>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<div>
+    @using (Html.BeginForm("Social", "Template", FormMethod.Post))
+    {
+        <div class="form-group col-md-4">
+            <label>Social</label>
+            <select id="social" class="form-control" name="IconSocial">
+                <option value="fab fa-fw fa-facebook-f">Facebook</option>
+                <option value="fab fa-fw fa-twitter">Twitter</option>
+                <option value="fab fa-fw fa-google">Google</option>
+                <option value="fab fa-fw fa-google-plus">Google+</option>
+                <option value="fab fa-fw fa-instagram">Instagram</option>
+                <option value="fab fa-fw fa-pinterest">Pinterest</option>
+                <option value="fab fa-fw fa-skype">Skype</option>
+            </select>
+            <label>Link</label>
+            <input type="text" name="Link" class="form-control" placeholder="Enter your link to social network"/>
+            <br />
+            <button class="btn btn-primary pull-right" id="submit" type="submit">Submit</button>
+        </div>
+    }
+</div>

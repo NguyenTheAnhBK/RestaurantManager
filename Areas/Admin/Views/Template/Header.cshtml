@@ -1,0 +1,23 @@
+﻿@model FrontEnd.Models.Header
+@{
+    ViewBag.Title = "Header";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit header</h2>
+
+<div>
+    @using (Html.BeginForm("Header", "Template", FormMethod.Post))
+    {
+        <div class="form-group col-md-4">
+            <label>PathProfier</label>
+            <input id="path_profier" type="file" class="form-control" name="PathImageProfier"/>
+            <label>Header Name</label>
+            <input id="header_name" type="text" class="form-control" name="HeaderName"/>
+            <label>Text</label>
+            <input id="header_text" type="text" class="form-control" name="Text"/>
+            <br />
+            <button class="btn btn-primary pull-right" id="submit" type="submit">Submit</button>
+        </div>
+    }
+</div>

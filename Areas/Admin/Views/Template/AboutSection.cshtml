@@ -1,0 +1,22 @@
+﻿@model FrontEnd.Models.AboutSection
+@{
+    ViewBag.Title = "AboutSection";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit About</h2>
+<div>
+    @using (Html.BeginForm("AboutSection", "Template", FormMethod.Post))
+    {
+        <div class="form-group col-md-4">
+            <label>Subject</label>
+            <input id="" type="text" class="form-control" name="Subject" />
+            <label>Text left</label>
+            <input id="header_name" type="text" class="form-control" name="Text1" />
+            <label>Text right</label>
+            <input id="header_text" type="text" class="form-control" name="Text2" />
+            <br />
+            <button class="btn btn-primary pull-right" id="submit" type="submit">Submit</button>
+        </div>
+    }
+</div>
